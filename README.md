@@ -1,4 +1,6 @@
 # Kinetic-Space
+### Fourth Game Made
+### Total Hours: **8**
 ### Made by Kino Rose
 ### NierPixel Game
 
