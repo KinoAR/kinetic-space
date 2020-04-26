@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/Spritesheet/sheet.png" type="Texture" id=1]
+[ext_resource path="res://scripts/powerup.gd" type="Script" id=2]
+[ext_resource path="res://assets/powerup.tres" type="AudioStream" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 809.994, 837.197, 18.3155, 29.0893 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 18.6863, 30.4923 )
+
+[node name="Powerup" type="KinematicBody2D"]
+collision_layer = 2
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 0, 29.0597 )
+rotation = -3.14159
+speed_scale = 2.0
+randomness = 1.0
+lifetime_randomness = 1.0
+fixed_fps = 45
+emission_shape = 2
+emission_rect_extents = Vector2( 25, 2 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_AudioStreamPlayer2D_finished"]
